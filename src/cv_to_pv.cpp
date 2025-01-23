@@ -142,7 +142,7 @@ cv_to_pv(const libcamera::ControlValue &value)
 rclcpp::ParameterType
 cv_to_pv_type(const libcamera::ControlId *const id)
 {
-  RCLCPP_INFO_STREAM(rclcpp::get_logger("camera"), "get_extent() for " << id << " is " << get_extent(id) << ", id->type() is " << id->type());
+  RCLCPP_INFO_STREAM(rclcpp::get_logger("camera"), "get_extent() for " << id->name() << " is " << get_extent(id) << ", id->type() is " << id->type());
   if (get_extent(id) == 0) {
     switch (id->type()) {
     case libcamera::ControlType::ControlTypeNone:

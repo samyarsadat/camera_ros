@@ -83,7 +83,7 @@ get_extent(const libcamera::ControlId *const id)
 #ifdef LIBCAMERA_HAS_RPI_VENDOR_CONTROLS
   IF(rpi::StatsOutputEnable)
   IF(rpi::Bcm2835StatsOutput)
-#if LIBCAMERA_VER_GE(0, 3, 2)
+#if LIBCAMERA_VER_GE(0, 3, 2) && defined(RASPBERRY_PI_LIBCAMERA)
   IF(rpi::CnnEnableInputTensor)
 #endif
 #endif
