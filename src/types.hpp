@@ -38,5 +38,7 @@ MAP(libcamera::Size, Size)
 #if LIBCAMERA_VER_GE(0, 4, 0)
 MAP(uint16_t, Unsigned16)
 MAP(uint32_t, Unsigned32)
+#endif
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
 MAP(libcamera::Point, Point)
 #endif
