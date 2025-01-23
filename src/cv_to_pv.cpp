@@ -11,6 +11,9 @@
 #include <type_traits>
 #include <vector>
 
+// FOR DEBUGGING
+#include <rclcpp/logging.hpp>
+
 
 #define CASE_CONVERT(T)           \
   case libcamera::ControlType##T: \
@@ -139,6 +142,7 @@ cv_to_pv(const libcamera::ControlValue &value)
 rclcpp::ParameterType
 cv_to_pv_type(const libcamera::ControlId *const id)
 {
+  RCLCPP_INFO_STREAM(get_logger(), "get_extent() for " << id << " is " << get_extent(id));
   if (get_extent(id) == 0) {
     switch (id->type()) {
     case libcamera::ControlType::ControlTypeNone:
@@ -196,5 +200,6 @@ cv_to_pv_type(const libcamera::ControlId *const id)
     }
   }
 
+  RCLCPP_INFO_STREAM(get_logger(), "End of cv_to_pv_type()");
   return rclcpp::ParameterType::PARAMETER_NOT_SET;
 }
