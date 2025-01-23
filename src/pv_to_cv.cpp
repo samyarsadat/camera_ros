@@ -49,7 +49,7 @@ pv_to_cv_int_array(const std::vector<int64_t> &values, const libcamera::ControlT
     return libcamera::Rectangle(values[0], values[1], values[2], values[3]);
   case libcamera::ControlTypeSize:
     return libcamera::Size(values[0], values[1]);
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
   case libcamera::ControlTypePoint:
     return libcamera::Point(values[0], values[1]);
 #endif
@@ -80,7 +80,7 @@ pv_to_cv(const rclcpp::Parameter &parameter, const libcamera::ControlType &type)
       CASE_CONVERT_INT(Unsigned16)
       CASE_CONVERT_INT(Unsigned32)
 #endif
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
       CASE_NONE(Point)
 #endif
     }

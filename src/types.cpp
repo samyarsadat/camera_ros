@@ -23,7 +23,7 @@ std::to_string(const libcamera::ControlType id)
     CASE_TYPE(Unsigned16)
     CASE_TYPE(Unsigned32)
 #endif
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
     CASE_TYPE(Point)
 #endif
   }

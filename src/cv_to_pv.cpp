@@ -86,7 +86,7 @@ cv_to_pv_scalar(const libcamera::Size &size)
   return rclcpp::ParameterValue(std::vector<int64_t> {size.width, size.height});
 }
 
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
 rclcpp::ParameterValue
 cv_to_pv_scalar(const libcamera::Point &point)
 {
@@ -128,7 +128,7 @@ cv_to_pv(const libcamera::ControlValue &value)
     CASE_CONVERT(Unsigned16)
     CASE_CONVERT(Unsigned32)
 #endif
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
     CASE_CONVERT(Point)
 #endif
   }
@@ -161,7 +161,7 @@ cv_to_pv_type(const libcamera::ControlId *const id)
       return rclcpp::ParameterType::PARAMETER_INTEGER_ARRAY;
     case libcamera::ControlType::ControlTypeSize:
       return rclcpp::ParameterType::PARAMETER_INTEGER_ARRAY;
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
     case libcamera::ControlType::ControlTypePoint:
       return rclcpp::ParameterType::PARAMETER_INTEGER_ARRAY;
 #endif
@@ -189,7 +189,7 @@ cv_to_pv_type(const libcamera::ControlId *const id)
       throw unsupported_control(id);
     case libcamera::ControlType::ControlTypeSize:
       throw unsupported_control(id);
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
     case libcamera::ControlType::ControlTypePoint:
       throw unsupported_control(id);
 #endif

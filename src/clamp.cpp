@@ -88,7 +88,7 @@ clamp(const CTRectangle &val, const CTRectangle &lo, const CTRectangle &hi)
   return CTRectangle {x, y, width, height};
 }
 
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
 CTPoint
 clamp(const CTPoint &val, const CTPoint &lo, const CTPoint &hi)
 {
@@ -158,7 +158,7 @@ clamp(const libcamera::ControlValue &value, const libcamera::ControlValue &min,
     CASE_CLAMP(Unsigned16)
     CASE_CLAMP(Unsigned32)
 #endif
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
     CASE_CLAMP(Point)
 #endif
   }
@@ -183,7 +183,7 @@ operator>(const libcamera::Rectangle &lhs, const libcamera::Rectangle &rhs)
          (lhs.y + lhs.height) > (rhs.y + rhs.height);
 }
 
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
 int
 squared_sum(const libcamera::Point &p)
 {
@@ -313,7 +313,7 @@ operator<(const libcamera::ControlValue &lhs, const libcamera::ControlValue &rhs
     CASE_LESS(Unsigned16)
     CASE_LESS(Unsigned32)
 #endif
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
     CASE_LESS(Point)
 #endif
   }
@@ -341,7 +341,7 @@ operator>(const libcamera::ControlValue &lhs, const libcamera::ControlValue &rhs
     CASE_GREATER(Unsigned16)
     CASE_GREATER(Unsigned32)
 #endif
-#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(LIBCAMERA_HAS_RPI_VENDOR_CONTROLS) && LIBCAMERA_VER_GE(0, 3, 2))
+#if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
     CASE_GREATER(Point)
 #endif
   }
