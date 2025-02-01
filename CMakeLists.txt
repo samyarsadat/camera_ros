@@ -32,7 +32,6 @@ add_library(utils OBJECT
 )
 target_include_directories(utils PUBLIC ${libcamera_INCLUDE_DIRS})
 target_link_libraries(utils ${libcamera_LINK_LIBRARIES})
-target_compile_definitions(utils PRIVATE RASPBERRY_PI_LIBCAMERA)
 ament_target_dependencies(
   utils
   "rclcpp"
