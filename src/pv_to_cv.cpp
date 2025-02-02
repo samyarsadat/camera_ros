@@ -101,7 +101,8 @@ pv_to_cv(const rclcpp::Parameter &parameter, const libcamera::ControlType &type)
       CASE_CONVERT_STR(Integer64)
       CASE_CONVERT_STR(Float)
       CASE_CONVERT_STR(String)
-    case libcamera::ControlTypeRectangle: {
+    case libcamera::ControlTypeRectangle:
+    {
       std::vector<std::vector<int>> decoded_array = decode_2d_numeric_array<int>(parameter.as_string());
       std::vector<libcamera::Rectangle> decoded_array_converted;
 
@@ -120,7 +121,8 @@ pv_to_cv(const rclcpp::Parameter &parameter, const libcamera::ControlType &type)
       CASE_CONVERT_STR(Unsigned32)
 #endif
 #if LIBCAMERA_VER_GE(0, 4, 0) || (defined(RASPBERRY_PI_LIBCAMERA) && LIBCAMERA_VER_GE(0, 3, 2))
-    case libcamera::ControlTypePoint: {
+    case libcamera::ControlTypePoint:
+    {
       std::vector<std::vector<int>> decoded_array = decode_2d_numeric_array<int>(parameter.as_string());
       std::vector<libcamera::Point> decoded_array_converted;
 

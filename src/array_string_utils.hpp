@@ -9,7 +9,7 @@
  * @return the provided 2D array encoded as a string
  *         with JSON-like formatting
  */
-template <typename T>
+template<typename T>
 std::string
 encode_2d_numeric_array(const std::vector<std::vector<T>> &array);
 
@@ -19,6 +19,6 @@ encode_2d_numeric_array(const std::vector<std::vector<T>> &array);
  * @return the provided string-encoded 2D array as a 2D vector
  *         of the specified numeric type (int/float/double)
  */
-template <typename T>
+template<typename T>
 std::vector<std::vector<T>>
 decode_2d_numeric_array(std::string_view array_str);

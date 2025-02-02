@@ -117,7 +117,8 @@ clamp_array(const libcamera::ControlValue &value, const libcamera::ControlValue 
     v = libcamera::Span<const T>(v_t_arr);
     a = libcamera::Span<const T>(a_t_arr);
     b = libcamera::Span<const T>(b_t_arr);
-  } else {
+  }
+  else {
     v = value.get<libcamera::Span<const T>>();
     a = min.get<libcamera::Span<const T>>();
     b = max.get<libcamera::Span<const T>>();
