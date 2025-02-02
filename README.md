@@ -56,7 +56,11 @@ git clone https://github.com/christianrauch/camera_ros.git
 source /opt/ros/$ROS_DISTRO/setup.bash
 cd ~/camera_ws/
 rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO --skip-keys=libcamera
+
+# Option A: official upstream libcamera
 colcon build --event-handlers=console_direct+
+# Option B: raspberrypi fork with support for newer camera modules
+# colcon build --event-handlers=console_direct+ --cmake-args -DCMAKE_CXX_FLAGS="-DRASPBERRY_PI_LIBCAMERA"
 ```
 
 If you are using a binary distribution of libcamera, you can skip adding this to the workspace. Additionally, if you want to use the bloomed libcamera package in the ROS repos, you can also omit `--skip-keys=libcamera` and have this binary dependency resolved automatically.

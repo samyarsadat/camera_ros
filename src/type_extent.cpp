@@ -80,9 +80,17 @@ get_extent(const libcamera::ControlId *const id)
   IF(HdrMode)
   IF(AeFlickerPeriod)
   IF(AeFlickerMode)
+  IF(draft::NoiseReductionMode)
 #ifdef LIBCAMERA_HAS_RPI_VENDOR_CONTROLS
   IF(rpi::StatsOutputEnable)
   IF(rpi::Bcm2835StatsOutput)
+#endif
+
+#if LIBCAMERA_VER_GE(0, 4, 0)
+#ifdef LIBCAMERA_HAS_RPI_VENDOR_CONTROLS
+#ifdef RASPBERRY_PI_LIBCAMERA
+  IF(rpi::CnnEnableInputTensor)
+#endif
 #endif
 #endif
 
