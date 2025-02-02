@@ -405,7 +405,7 @@ CameraNode::CameraNode(const rclcpp::NodeOptions &options) : Node("camera", opti
   std::string ci_file_url_param = get_parameter("ci_file_url").as_string();
   if (!ci_file_url_param.empty()) {
     if (cim.validateURL(ci_file_url_param)) {
-      RCLCPP_INFO_STREAM(get_logger(), "loading camera calibration info from: \"" << ci_file_url_param << "\"");
+      RCLCPP_INFO_STREAM(get_logger(), "loading camera calibration info from \"" << ci_file_url_param << "\"");
       cim.loadCameraInfo(ci_file_url_param);
     }
     else {
