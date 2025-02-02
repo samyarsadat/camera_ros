@@ -85,6 +85,7 @@ get_extent(const libcamera::ControlId *const id)
   IF(rpi::StatsOutputEnable)
   IF(rpi::Bcm2835StatsOutput)
 #endif
+#endif
 
 #if LIBCAMERA_VER_GE(0, 4, 0)
 #ifdef LIBCAMERA_HAS_RPI_VENDOR_CONTROLS
