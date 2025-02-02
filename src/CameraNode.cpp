@@ -219,6 +219,23 @@ CameraNode::CameraNode(const rclcpp::NodeOptions &options) : Node("camera", opti
   declare_parameter<int64_t>("width", {}, param_descr_ro);
   declare_parameter<int64_t>("height", {}, param_descr_ro);
 
+  // camera info file url
+  rcl_interfaces::msg::ParameterDescriptor param_descr_ci_file_url;
+  param_descr_ci_file_url.description = "camera calibration info file url";
+  param_descr_ci_file_url.read_only = true;
+  declare_parameter<std::string>("ci_file_url", {}, param_descr_ci_file_url);
+
+  std::string ci_file_url_param = get_parameter("ci_file_url").as_string();
+  if (!ci_file_url_param.empty()) {
+    if (cim.validateURL(ci_file_url_param)) {
+      RCLCPP_INFO_STREAM(get_logger(), "loading camera calibration info from: \"" << ci_file_url_param << "\"");
+      cim.loadCameraInfo(ci_file_url_param);
+    }
+    else {
+      throw std::runtime_error("invalid camera info file path");
+    }
+  }
+
   // camera ID
   declare_parameter("camera", rclcpp::ParameterValue {}, param_descr_ro.set__dynamic_typing(true));
 
