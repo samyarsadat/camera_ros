@@ -91,6 +91,8 @@ get_extent(const libcamera::ControlId *const id)
 #ifdef LIBCAMERA_HAS_RPI_VENDOR_CONTROLS
 #ifdef RASPBERRY_PI_LIBCAMERA
   IF(rpi::CnnEnableInputTensor)
+  IF(rpi::SyncMode)
+  IF(rpi::SyncFrames)
 #endif
 #endif
 #endif
