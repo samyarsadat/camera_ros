@@ -106,7 +106,7 @@ pv_to_cv(const rclcpp::Parameter &parameter, const libcamera::ControlType &type)
 
       for (auto &item : decoded_array) {
         if (item.size() < 4)
-          continue;
+          throw invalid_conversion("cannot convert integer array of size <4 to type Rectangle");
 
         decoded_array_converted.emplace_back(item[0], item[1], item[2], item[3]);
       }
@@ -124,7 +124,7 @@ pv_to_cv(const rclcpp::Parameter &parameter, const libcamera::ControlType &type)
 
       for (auto &item : decoded_array) {
         if (item.size() < 2)
-          continue;
+          throw invalid_conversion("cannot convert integer array of size <2 to type Point");
 
         decoded_array_converted.emplace_back(item[0], item[1]);
       }
