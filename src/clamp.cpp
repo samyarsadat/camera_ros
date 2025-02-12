@@ -109,7 +109,12 @@ clamp_array(const libcamera::ControlValue &value, const libcamera::ControlValue 
   std::vector<T> vclamp;
 
   if (!value.isArray() && extent != 0) {
-    vclamp.push_back(std::clamp(value.get<const T>(), min.get<const T>(), max.get<const T>()));
+    if (extent == libcamera::dynamic_extent) {
+      vclamp.push_back(std::clamp(value.get<const T>(), min.get<const T>(), max.get<const T>()));
+    }
+    else {
+      throw std::runtime_error("cannot clamp scalar value for fixed-extent control");
+    }
   }
   else {
     const libcamera::Span<const T> v = value.get<libcamera::Span<const T>>();

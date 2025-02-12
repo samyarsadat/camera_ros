@@ -63,7 +63,7 @@ std::string
 trim_outer_brackets(const std::string_view str)
 {
   if (str.front() != '[' || str.back() != ']') {
-    throw std::invalid_argument("Invalid format: missing enclosing brackets!");
+    throw std::invalid_argument("invalid format: missing enclosing brackets");
   }
 
   std::string result = str.data();
@@ -89,7 +89,7 @@ parse_single_numeric_array(const std::string_view array_str)
   while (std::getline(array_ss, item, ',')) {
     try {
       if (!str_is_numeric(item)) {
-        throw std::invalid_argument("Invalid format: array item is non-numeric!");
+        throw std::invalid_argument("invalid format: array item is non-numeric");
       }
 
       if constexpr (std::is_same_v<T, int>) {
@@ -102,11 +102,11 @@ parse_single_numeric_array(const std::string_view array_str)
         result.push_back(std::stod(item));
       }
       else {
-        throw std::invalid_argument("Unsupported array item type!");
+        throw std::invalid_argument("unsupported array item type");
       }
     }
     catch (const std::invalid_argument &e) {
-      throw std::invalid_argument("Invalid format: unable to parse numerical value '" + item + "'! \n" + e.what());
+      throw std::invalid_argument("invalid format: unable to parse numerical value '" + item + "'\n" + e.what());
     }
   }
 
@@ -120,7 +120,7 @@ decode_2d_numeric_array(const std::string_view array_str)
   std::string normalized_str = normalize_str(array_str);
 
   if (normalized_str.empty() || normalized_str.size() <= 4) {
-    throw std::invalid_argument("Invalid format, array is empty!");
+    throw std::invalid_argument("invalid format: array is empty");
   }
 
   // Trim twice to remove both outer brackets
